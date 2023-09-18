@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body { padding : 30 px; } 
+  </style>
+</head>
+<body>
+  
+  <!---Option 1-->
+  <button class="btn btn-danger" onclick="goCooCoo()">
+    Go CooCoo
+  </button>
+
+  <!--Option 2-->
+  <button class="btn btn-danger coffee-btn" onclick="goCooCoo()">
+    Get Coffee
+  </button>
+
+  //<!--Option 3, using addEventListener-->
+  <button class="btn btn-primary lala-btn">
+    Not Listening
+  </button>
+
+<!--JAVASCRIPT-->
+
+<script>
+  //grab elements from the dom
+  //attach event listeners
+
+  //const body = document.querySelector('body');
+  //document.body.style.backgroundColor = 'red';
+
+  function goCooCoo() {
+    document.body.style.backgroundColor = 'red';
+  }
+
+  //<!--Option 2-->
+
+  const coffeeButton = document.querySelector('.coffee-btn');
+  coffeeButton.onclick = function() {
+    document.body.style.backgroundColor = 'red';
+  }
+  coffeeButton.onmouseenter = goCooCoo;
+  //if I want three get coffee buttons, use querySelectorAll and you will get back a node list. 
+
+  //<!--Option 3, using addEventListener-->
+  const lalaButton = document.querySelector('.lala-btn');  
+
+  function notListening() {
+    document.body.style.backgroundColor = '#1A1A1A';
+  }
+
+  lalaButton.addEventListener('click', notListening);
+  lalaButton.addEventListener('mouseenter', goCooCoo);
+
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach(button => button.addEventLinstener('mouseleave', notListening));
+
+</script>
+
+</body>
+</html>
